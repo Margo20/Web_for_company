@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+    <title>{% block title %} Веб приложение {% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/reset.css' %}">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+</head>
+<body>
+    <header >
+        <div class="header">
+            <div class="wrapper">
+                <div class="header_wrapper_nav">
+                    <nav class="header__nav">
+                        <h3>Добро пожаловать</h3>
+                        {% if user.is_authenticated %}
+                        <h3>{{ request.user}} !</h3>
+                        {% endif %}
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!--Header end-->
+
+     {% block content %}
+
+    {% endblock %}
+
+</body>
+</html>

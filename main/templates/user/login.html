@@ -1,0 +1,28 @@
+{% extends 'pages/base.html' %}
+{% load static %}
+{% block title %}
+{% endblock %}
+{% block content %}
+<section class="wrapper">
+    <div class="login_page">
+        <div class="wrapper_log_reg_form">
+            <div class="wrapper_form">
+                <form action="." method="post" class="form_hw">
+                    {% csrf_token %}
+                    <table>
+                        <tr >
+                            <td><input type="text" placeholder="ВВЕДИТЕ ИМЯ"{{ form.username }}</td>
+                        </tr>
+                        <tr>
+                            <td><input placeholder="ВВЕДИТЕ ПАРОЛЬ" type="password"{{form.password}}</td>
+                        <strong style="color:{{ color }}"> {{ success }} </strong>
+                        </tr>
+                    </table>
+                        <button class="log_btn">Вход</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+

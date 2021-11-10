@@ -1,0 +1,21 @@
+{% extends 'user/profile.html' %}
+{% load static %}
+{% block title %}
+    Добавить сотрудника
+{% endblock %}
+{% block content %}
+
+<div class="form-request">
+    <h2 class="h_manager">Добавление сотрудника</h2>
+    <form action="" method="POST" enctype="multipart/form-data">
+        <table>
+        {% csrf_token %}
+
+       {{form.as_table}}
+            <tr><td><input type="submit" value="Добавить сотрудника"></td></tr>
+            </table>
+            {{text}}
+    </form>
+</div>
+
+{% endblock %}

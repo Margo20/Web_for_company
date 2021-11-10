@@ -1,0 +1,26 @@
+{% extends 'pages/base.html' %}
+{% load static%}
+{% block title %}
+    Страница регистрации
+{% endblock%}
+
+{% block content %}
+<section class="wrapper">
+    <div class="register_page">
+        <div class="wrapper_register">
+            <div class="wrapper_form_r">
+                <form action="." method="post" class="form_hw">
+                    {% csrf_token %}
+                     <table>
+                        <tr >
+                            <div>{{form }}</div>
+                        </tr>
+                        <div class="message_success">{{message}}</div>
+                    </table>
+                        <button><h1> Зарегистрироваться </h1></button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

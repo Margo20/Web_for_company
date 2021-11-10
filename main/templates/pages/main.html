@@ -1,0 +1,27 @@
+{% extends 'pages/base.html' %}
+{% load static %}
+{% block title %}
+{% endblock %}
+{% block content %}
+<section class="wrapper">
+    <div class="main_page">
+        <div class="main_inner">
+            <div class="log">
+                {% if user.is_authenticated %}
+                <a href="{% url 'main:logout' %}" class="log_reg_inner">Выход</a>
+                <a href="{% url 'main:change_password' %}" class="log_reg_inner">Сменить пароль</a>
+                {% else %}
+                <a href="{% url 'main:login' %}" class="log_reg_inner">Вход в приложение</a>
+{%block navbar%}
+    <a href="{% url 'main:register' %}" class="log_reg_inner">Регистрация</a>
+    <a href="{% url 'main:logout' %}" class="log_reg_inner">Выход</a>
+    <a href="{% url 'main:change_password' %}" class="log_reg_inner">Сменить пароль</a>
+    <div class="message_error">{{error}}</div>
+{% endblock %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+

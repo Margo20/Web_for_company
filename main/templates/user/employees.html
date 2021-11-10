@@ -1,0 +1,126 @@
+{% extends 'user/profile.html' %}
+{% load static %}
+{% block title %}
+    Справочник сотрудников
+{% endblock %}
+{% block content %}
+
+<div >
+    <button class="add_btn"><a href="{% url 'main:add_employee' %}" >Добавить сотрудника</a></button>
+</div>
+
+<h2 class="h_manager">Карточка сотрудника</h2>
+    <div class="cost_pr">
+         <table class="table_profile" width = "100%" border = "1">
+             <tr>
+                 <th class="">
+                     <h5>Фамилия</h5>
+                 </th>
+                  <th class="">
+                     <h5>Имя Отчество</h5>
+                 </th>
+                 <th class="">
+                     <h5>Должность</h5>
+                 </th>
+                 <th class="">
+                     <h5>Отдел</h5>
+                 </th>
+             </tr>
+             <tr>
+                 <td class="td">{{employee.surname}}</td>
+                 <td class="td">{{employee.name}}</td>
+                 <td class="td">{{employee.position}}</td>
+                 <td class="td">{{employee.department}}</td>
+             </tr>
+             <tr>
+                 <th class="">
+                     <h5>Телефон</h5>
+                 </th>
+                  <th class="">
+                      <h5>Email</h5>
+                 </th>
+                  <th class="">
+                      <h5>Дата трудоустройства</h5>
+                 </th>
+                 <th class="">
+                      <h5>Дата окончания контракта</h5>
+                 </th>
+             </tr>
+             <tr>
+                 <td class="td">{{employee.phone}}</td>
+                 <td class="td">{{employee.email}}</td>
+                 <td class="td">{{employee.hiring_date}}</td>
+                 <td class="td">{{employee.termination_date}}</td>
+            </tr>
+             <tr>
+                  <th class="">
+                      <h5>Стаж</h5>
+                 </th>
+                 <th class="">
+                      <h5>Дата рождения</h5>
+                 </th>
+                 <th class="">
+                      <h5>Доп.информация</h5>
+                 </th>
+                 <th class="">
+                      <h5>Перевод в другой отдел</h5>
+                 </th>
+             </tr>
+
+
+             <tr>
+                 <td class="td">{{employee.experience}}</td>
+                 <td class="td">{{employee.birthday}}</td>
+                <td class="td">{{employee.description}}</td>
+                <td class="td"><a href="edit/{{item.id}}">Внести изменения </a></td>
+                <div>
+                    <h1>{{text}}</h1>
+                </div>
+             </tr>
+
+         </table>
+<h2 class="h_manager">Cписок сотрудников предприятия</h2>
+    <div class="cost_pr">
+         <table class="table_profile" width = "100%" border = "1">
+             <tr>
+                 <th class="">
+                      <h5>Карточка сотрудника</h5>
+                 </th>
+                 <th class="">
+                     <h5>Фамилия</h5>
+                 </th>
+                  <th class="">
+                     <h5>Имя Отчество</h5>
+                 </th>
+                 <th class="">
+                     <h5>Должность</h5>
+                 </th>
+                 <th class="">
+                     <h5>Отдел</h5>
+                 </th>
+                  <th class="">
+                      <h5>Дата трудоустройства</h5>
+                 </th>
+                  <th class="">
+                      <h5>Стаж</h5>
+                 </th>
+             </tr>
+             {% for item in all_employees %}
+             <tr>
+                 <td class="td"><a href="{% url 'main:employee' item.id %}" >{{item.id}}</a></td>
+                 <td class="td">{{item.surname}}</td>
+                 <td class="td">{{item.name}}</td>
+                 <td class="td">{{item.position}}</td>
+                 <td class="td">{{item.department}}</td>
+                 <td class="td">{{item.hiring_date}}</td>
+                 <td class="td">{{item.experience}}</td>
+                 <td class="td"><a href="del_employee/{{item.id}}">Удалить </a></td>
+                <div>
+                    <h1>{{text}}</h1>
+                </div>
+             </tr>
+             {% endfor %}
+         </table>
+        {% endblock %}
+            </div>
+    </div>
